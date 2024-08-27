@@ -1,0 +1,38 @@
+class Kontakte:
+    def __init__(self):
+        self.kontakt_list = []
+
+
+    def anrufen(self):
+        print("anzurufen")
+
+    def einfugen(self, name, telefonnummer):
+        self.kontakt_list.append({"name": name, "telefonnummer": telefonnummer})
+
+    def suchen(self,name):
+        for kontakt in self.kontakt_list:
+            if kontakt["name"] == name:
+                return kontakt["telefonnummer"]
+        raise Exception("keine kontakte vorhanden!")
+
+    def kontakte_anzaigen(self):
+        if not self.kontakt_list:
+            print("keine kontakte vorhanden")
+        else:
+            print("kontakte: ")
+            for kontakt in self.kontakt_list:
+                print(f"Name: {kontakt['name']}, Telefonnummer: {kontakt['telefonnummer']}")
+        
+        
+    
+knt = Kontakte()
+
+knt.einfugen("stefan", 1223433848)
+knt.einfugen("pedram", 92183810389)
+knt.einfugen("manuell", 94743579)
+knt.einfugen("erik", 276547673)
+
+knt.kontakte_anzaigen()
+
+telefonnummer = knt.suchen("erik")
+print(f"Vorhanden! Die Telefonnummer ist: {telefonnummer}")
